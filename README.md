@@ -2,6 +2,9 @@
 
 > mooc ssr meituan project
 
+## .nuxtignore
+使用这个文件，是为了解决 `Classic mode for store/ is deprecated and will be removed in Nuxt 3.` 警告输出，详情：https://github.com/nuxt/nuxt.js/issues/4912
+
 ## Build Setup
 
 ``` bash
