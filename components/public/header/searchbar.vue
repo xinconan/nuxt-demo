@@ -23,14 +23,11 @@
             v-if="isHotPlace"
             class="hotPlace">
             <dt>热门搜索</dt>
-            <dd>哈哈</dd>
-            <dd>哈哈</dd>
-            <dd>哈哈</dd>
-            <!-- <dd
-              v-for="(item,idx) in $store.state.home.hotPlace.slice(0,5)"
+            <dd
+              v-for="(item,idx) in hotPlace.slice(0,5)"
               :key="idx">
-              <a :href="'/products?keyword='+encodeURIComponent(item.name)">{{ item.name }}</a>
-            </dd> -->
+              <a :href="'/products?keyword='+encodeURIComponent(item)">{{ item }}</a>
+            </dd>
           </dl>
           <dl
             v-if="isSearchList"
@@ -47,10 +44,10 @@
           </dl>
         </div>
         <p class="suggest">
-          <!-- <a
-            v-for="(item,idx) in $store.state.home.hotPlace.slice(0,5)"
+          <a
+            v-for="(item,idx) in hotPlace.slice(0,5)"
             :key="idx"
-            :href="'/products?keyword='+encodeURIComponent(item.name)">{{ item.name }}</a> -->
+            :href="'/products?keyword='+encodeURIComponent(item)">{{ item }}</a>
         </p>
         <ul class="nav">
           <li><nuxt-link
@@ -90,7 +87,7 @@ export default {
     return {
       search:'',
       isFocus:false,
-      hotPlace:[],
+      hotPlace:['故宫博物院', '玉渊潭公园', '北京欢乐谷','北京动物园','北京野生动物园','颐和园','故宫珍宝馆','圆明园'],
       searchList:[]
     }
   },
