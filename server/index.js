@@ -1,8 +1,16 @@
 const Koa = require('koa')
+const bodyParser = require('koa-bodyparser')
+const json = require('koa-json')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
+const user = require('./user')
 
 const app = new Koa()
+
+app.use(bodyParser({
+  extendTypes: ['json', 'form', 'text']
+}))
+app.use(json())
 
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
@@ -24,6 +32,8 @@ async function start() {
   } else {
     await nuxt.ready()
   }
+
+  app.use(user.routes()).use(user.allowedMethods())
 
   app.use(ctx => {
     ctx.status = 200
